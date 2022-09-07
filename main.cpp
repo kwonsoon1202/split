@@ -39,7 +39,7 @@ string::size_type width(const vector<string>& words)
     return maxLen;
 }
 
-vector<string> frame(const vector<string> words)
+vector<string> frame(const vector<string>& words)
 {
     vector<string> frameWords;
 
@@ -47,8 +47,8 @@ vector<string> frame(const vector<string> words)
 
     string boarder(maxLen + 4, '*');
     frameWords.push_back(boarder);
-    for(vector<string>::const_iterator it = words.cbegin(); it != words.cbegin(); ++it){
-        frameWords.push_back("*" + *it + string(maxLen - it->size(), ' ') + "*");
+    for(vector<string>::const_iterator it = words.cbegin(); it != words.cend(); ++it){
+        frameWords.push_back("* " + *it + string(maxLen - it->size(), ' ') + " *");
     }
     frameWords.push_back(boarder);
 
@@ -62,8 +62,10 @@ int main() {
 
         words = frame(words);
 
-        for (vector<string>::const_iterator it = words.cbegin(); it != words.cend(); ++ it)
+        for (vector<string>::const_iterator it = words.cbegin(); it != words.cend(); ++ it) {
             cout << * it << endl;
+        }
+
     }
     return 0;
 }
